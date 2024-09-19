@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: mansikanwar2001/frontend:latest
+    container_name: frontend_container
+    ports:
+      - "3000:3000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - FLASK_DEBUG=${FLASK_DEBUG}
+      - EXECUTOR_MAX_WORKERS=${EXECUTOR_MAX_WORKERS}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_ENV=${PINECONE_ENV}
+      
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+  backend:
+    image: mansikanwar2001/backend:latest
+    container_name: backend_container
+    ports:
+      - "5000:5000"
+    environment:
+      - host_name=${host_name}
+      - user_name=${user_name}
+      - user_password=${user_password}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
