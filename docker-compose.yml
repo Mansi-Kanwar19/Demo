@@ -5,14 +5,13 @@ services:
     image: mansikanwar2001/frontend:latest
     container_name: frontend_container
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"  # Bind frontend to localhost
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - FLASK_DEBUG=${FLASK_DEBUG}
       - EXECUTOR_MAX_WORKERS=${EXECUTOR_MAX_WORKERS}
       - PINECONE_API_KEY=${PINECONE_API_KEY}
       - PINECONE_ENV=${PINECONE_ENV}
-      
     networks:
       - app-network
     depends_on:
@@ -22,13 +21,12 @@ services:
     image: mansikanwar2001/backend:latest
     container_name: backend_container
     ports:
-      - "5000:5000"
+      - "0.0.0.0:5000:5000"  # Backend is accessible globally
     environment:
       - host_name=${host_name}
       - user_name=${user_name}
       - user_password=${user_password}
       - PINECONE_API_KEY=${PINECONE_API_KEY}
-      
     networks:
       - app-network
 
