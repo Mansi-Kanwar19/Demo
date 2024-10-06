@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    image: mansikanwar2001/frontend:latest
+    image: arihant029/frontend:latest
     container_name: frontend_container
     ports:
       - "127.0.0.1:3000:3000"  # Bind frontend to localhost
@@ -18,7 +18,7 @@ services:
       - backend
 
   backend:
-    image: mansikanwar2001/backend:latest
+    image: arihant029/backend:latest
     container_name: backend_container
     ports:
       - "0.0.0.0:5000:5000"  # Backend is accessible globally
