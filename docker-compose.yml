@@ -14,8 +14,8 @@ services:
       - PINECONE_ENV=${PINECONE_ENV}
     networks:
       - app-network
-    depends_on:
-      - backend
+    # depends_on:
+    #   - backend
 
   # backend:
   #   image: arihant029/backend:latest
