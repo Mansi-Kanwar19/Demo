@@ -17,18 +17,18 @@ services:
     depends_on:
       - backend
 
-  backend:
-    image: arihant029/backend:latest
-    container_name: backend_container
-    ports:
-      - "0.0.0.0:5000:5000"  # Backend is accessible globally
-    environment:
-      - host_name=${host_name}
-      - user_name=${user_name}
-      - user_password=${user_password}
-      - PINECONE_API_KEY=${PINECONE_API_KEY}
-    networks:
-      - app-network
+  # backend:
+  #   image: arihant029/backend:latest
+  #   container_name: backend_container
+  #   ports:
+  #     - "0.0.0.0:5000:5000"  # Backend is accessible globally
+  #   environment:
+  #     - host_name=${host_name}
+  #     - user_name=${user_name}
+  #     - user_password=${user_password}
+  #     - PINECONE_API_KEY=${PINECONE_API_KEY}
+  #   networks:
+  #     - app-network
 
 networks:
   app-network:
